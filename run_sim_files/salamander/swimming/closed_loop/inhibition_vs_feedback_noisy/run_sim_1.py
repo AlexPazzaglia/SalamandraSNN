@@ -1,0 +1,115 @@
+''' Run the spinal cord model together with the mechanical simulator '''
+
+import os
+import sys
+import inspect
+
+CURRENTDIR = os.path.dirname(os.path.abspath(inspect.getfile(inspect.currentframe())))
+PACKAGEDIR = CURRENTDIR.split('salamandrasnn')[0] + 'salamandrasnn'
+sys.path.insert(0, CURRENTDIR)
+sys.path.insert(0, PACKAGEDIR)
+
+from network_experiments.snn_simulation_setup import get_params_processes
+from network_experiments.snn_simulation import simulate_single_net_multi_run_closed_loop_build
+
+from network_modules.parameters.network_parameters import SnnParameters
+import network_experiments.default_parameters.salamander.swimming.closed_loop.default as default
+
+def main():
+    ''' Run the spinal cord model together with the mechanical simulator '''
+
+    results_path             = '/data/pazzagli/simulation_results'
+    simulation_data_file_tag = 'inhibition_vs_feedback_noisy'
+
+    # Default parameters
+    default_params = default.get_default_parameters()
+
+    # Process parameters
+    inhibition_amplitude = 0.0
+
+    params_process = default_params['params_process'] | {
+
+        'simulation_data_file_tag' : simulation_data_file_tag,
+        'load_connectivity_indices': True,
+
+        'noise_term' : True,
+
+        'ps_gain_axial': default.get_scaled_ps_gains(
+            alpha_fraction_th   = 0.01,
+            reference_data_name = default_params['reference_data_name'],
+        ),
+
+        # CONNECTIVITY
+        'connectivity_axial_newpars' : {
+            'ax2ax': [
+                {
+                    'name'      : 'AX_in -> AX_all Contra',
+                    'synapse'   : 'syn_in',
+                    'type'      : 'gaussian_identity',
+                    'parameters': {
+                        'y_type'    : 'y_neur',
+                        'amp'       : inhibition_amplitude,
+                        'sigma_up'  : 0.8,
+                        'sigma_dw'  : 1.2,
+                    },
+                    'cond_list' : [ ['', 'opposite', 'ax', 'in', 'ax', ['ex', 'in']] ],
+                    'cond_str'  : '',
+                }
+            ]
+        }
+
+    }
+
+    # Params runs
+    default_snn_pars = SnnParameters(
+        parsname     = default_params['parsname'],
+        results_path = results_path,
+    )
+
+    indices_cpg = default_snn_pars.topology.network_modules['cpg']['axial'].indices
+    indices_mc  = default_snn_pars.topology.network_modules['mc']['axial'].indices
+
+    params_runs = [
+        {
+            'stim_a_off' : 0.7,
+
+            # NOISE
+            'scalings' : {
+                'neural_params' : [
+                    {
+                        'neuron_group_ind': 0,
+                        'var_name'        : 'sigma',
+                        'indices'         : indices_cpg,
+                        'nominal_value'   : [1.0, 'mV'],
+                        'scaling'         : 3.0,
+                    },
+                    {
+                        'neuron_group_ind': 1,
+                        'var_name'        : 'sigma',
+                        'indices'         : indices_mc,
+                        'nominal_value'   : [1.0, ''],
+                        'scaling'         : 0.1,
+                    }
+                ],
+            },
+        }
+    ]
+
+    # Simulate
+    simulate_single_net_multi_run_closed_loop_build(
+        modname             = f'{CURRENTDIR}/net_farms_limbless_noisy.py',
+        parsname            = default_params['parsname'],
+        params_process      = get_params_processes(params_process)[0][0],
+        params_runs         = params_runs,
+        tag_folder          = 'SIM',
+        tag_process         = '0',
+        save_data           = False,
+        plot_figures        = True,
+        results_path        = results_path,
+        delete_files        = False,
+        delete_connectivity = False,
+    )
+
+
+if __name__ == '__main__':
+    main()

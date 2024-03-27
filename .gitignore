@@ -1,0 +1,55 @@
+#: Ignore .DS_STORE
+.DS_STORE
+.DS_Store
+._.DS_Store
+
+#: Folders
+experimental_data/zebrafish_data_processing/Roussel - Zebrafish spinal locomotor circuit
+*backup
+
+#: Python
+__pycache__/
+results/
+*.orig
+*.npy
+*.pyc
+*.*~
+*_flymake.py
+*.ipynb
+*.pkl
+*.pickle
+*.dill
+*.brian
+
+# VSCode
+.vscode
+
+# Pylint
+.pylintrc
+
+# GeNN
+GeNNworkspace
+
+#: Docs
+*.txt
+
+# Logging
+logs
+
+# Included
+!requirements.txt
+
+# Figures
+*.pdf
+*.png
+*.jpg
+*.jpeg
+*.svg
+*.mp4
+
+# Results
+*simulation_results
+*simulation_results_test
+*generated_kinematics
+**/kinematics/*.csv
+*.json

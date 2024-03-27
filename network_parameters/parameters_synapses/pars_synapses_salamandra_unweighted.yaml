@@ -1,0 +1,186 @@
+# Temporal parameters
+synaptic_labels_ex      : [ampa, nmda]
+synaptic_labels_in      : [glyc]
+conduction_speed        : 100
+synaptic_delay_nominal  : 0.002
+synaptic_delay_muscle   : 0.002
+include_conduction_delay: False
+
+# SYNAPTIC MODEL PARAMETERS
+
+# Shared synaptic parameters
+shared_syn_params :
+
+    # syn_ex
+    -   synaptic_group : 0
+        neuron_group   : 0
+        E_ampa         : [0.0,   mV]
+        E_nmda         : [0.0,   mV]
+
+    # syn_in
+    -   synaptic_group : 1
+        neuron_group   : 0
+        E_glyc         : [-85.0, mV]
+
+    # syn_mc_ex
+    -   synaptic_group : 2
+        neuron_group   : 1
+        E_ampa         : [  1.0, '']
+        E_nmda         : [  1.0, '']
+        tau_ampa       : [  2.0, ms]
+        tau_nmda       : [ 10.0, ms]
+
+    # syn_mc_in
+    -   synaptic_group : 3
+        neuron_group   : 1
+        E_glyc         : [ 0.0,  '']
+        tau_glyc       : [ 2.0,  ms]
+
+# Measurement units of variable synaptic parameters
+variable_syn_params_units :
+
+    # syn_ex
+    -   synaptic_group : 0
+        neuron_group   : 0
+        tau_ampa       : second
+        tau_nmda       : second
+
+    # syn_in
+    -   synaptic_group : 1
+        neuron_group   : 0
+        tau_glyc       : second
+
+# Values of variable synaptic parameters
+variable_syn_params :
+
+    # syn_ex
+    -   synaptic_group : 0
+        neuron_group   : 0
+        tau_ampa       : [ 20.0, ms]
+        tau_nmda       : [100.0, ms]
+
+    # syn_in
+    -   synaptic_group : 1
+        neuron_group   : 0
+        tau_glyc       : [20.0, ms]
+
+
+# COMMON SYNAPTIC WEIGHTS
+
+syn_weights_list :
+
+    # Intra-CPG
+    # syn_weights_ax
+    -   source_name : cpg.axial
+        target_name : cpg.axial
+        weight_ampa : [0.35, '']
+        weight_nmda : [0.35, '']
+        weight_glyc : [0.33, '']
+
+    # syn_weights_li (intra-limb)
+    -   source_name : cpg.limbs
+        target_name : cpg.limbs
+        weight_ampa : [0.83, '']
+        weight_nmda : [0.83, '']
+        weight_glyc : [0.85, '']
+        extra_cond  : [[limb_id_pre, limb_id_post], limb_id_pre == limb_id_post]
+
+    # RS2cpg
+    # syn_weights_rs2ax
+    -   source_name : rs.axial
+        target_name : cpg.axial
+        weight_ampa : [0.75, '']
+        weight_nmda : [0.75, '']
+        weight_glyc : [1.00, '']    # No in.
+
+    # syn_weights_rs2li
+    -   source_name : rs.limbs
+        target_name : cpg.limbs
+        weight_ampa : [0.83, '']
+        weight_nmda : [0.83, '']
+        weight_glyc : [1.00, '']
+        weight_diff : [ 0.1, '']    # No in.
+
+    # CPG2cpg
+    # syn_weights_li2ax
+    -   source_name : cpg.limbs
+        target_name : cpg.axial
+        weight_ampa : [0.63, '']
+        weight_nmda : [0.63, '']
+        weight_glyc : [0.57, '']
+
+    # syn_weights_li2li (inter-limb)
+    -   source_name : cpg.limbs
+        target_name : cpg.limbs
+        weight_ampa : [0.80, '']
+        weight_nmda : [0.80, '']
+        weight_glyc : [0.90, '']
+        extra_cond  : [[limb_id_pre, limb_id_post], limb_id_pre != limb_id_post]
+
+    # # syn_weights_li2li_latdiag (inter-limb)
+    # -   source_name : cpg.limbs
+    #     target_name : cpg.limbs
+    #     weight_ampa : [0.30, '']
+    #     weight_nmda : [0.30, '']
+    #     weight_glyc : [1.00, '']
+    #     extra_cond  : [[limb_id_pre, limb_id_post], limb_id_pre != limb_id_post]
+
+    # CPG2rs
+    # syn_weights_ax2rs
+    -   source_name : cpg.axial
+        target_name : rs.axial
+        weight_ampa : [0.25, '']
+        weight_nmda : [0.25, '']
+        weight_glyc : [0.50, '']
+
+    # syn_weights_li2rs
+    -   source_name : cpg.limbs
+        target_name : rs.limbs
+        weight_ampa : [0.25, '']
+        weight_nmda : [0.25, '']
+        weight_glyc : [0.50, '']
+
+    # CPG2mn
+    # syn_weights_ax2mn
+    -   source_name : cpg.axial
+        target_name : mn.axial
+        weight_ampa : [1.00, '']    # 0.35
+        weight_nmda : [1.00, '']    # 0.35
+        weight_glyc : [1.00, '']    # 0.33
+
+    # syn_weights_li2mn
+    -   source_name : cpg.limbs
+        target_name : mn.limbs
+        weight_ampa : [0.83, '']    # 1.00
+        weight_nmda : [0.83, '']    # 1.00
+        weight_glyc : [0.85, '']    # 1.00
+
+    # PS2cpg
+    # syn_weights_ps2ax
+    -   source_name : ps.axial
+        target_name : cpg.axial
+        weight_ampa : [0.35, '']    # 1.00
+        weight_nmda : [0.35, '']    # 1.00
+        weight_glyc : [0.33, '']    # 1.00
+
+    # PS2mn
+    # syn_weights_ps2mn
+    -   source_name : ps.axial
+        target_name : mn.axial
+        weight_ampa : [0.35, '']    # 1.00
+        weight_nmda : [0.35, '']    # 1.00
+        weight_glyc : [0.33, '']    # 1.00
+
+    # MN2mc
+    # syn_weights_mn2mc
+    -   source_name : mn.axial
+        target_name : mc.axial
+        weight_ampa : [1.00, '']    # 0.35
+        weight_nmda : [1.00, '']    # 0.35
+        weight_glyc : [1.00, '']    # 0.33
+
+    -   source_name : mn.limbs
+        target_name : mc.limbs
+        weight_ampa : [0.35, '']    # 1.00
+        weight_nmda : [0.35, '']    # 1.00
+        weight_glyc : [0.33, '']    # 1.00

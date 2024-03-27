@@ -1,0 +1,102 @@
+netname     : net_farms_4limb_1dof_unweighted
+animal_model: salamandra_v4
+timestep    : 0.001
+duration    : 10
+int_method  : euler
+
+set_seed : False
+seed_value : 4321
+
+# Parameters files
+pars_topology_filename: pars_topology_farms_4limb_1dof_unweighted
+pars_neurons_filename : pars_neurons_salamandra_unweighted
+pars_synapses_filename: pars_synapses_salamandra_unweighted
+pars_drive_filename   : pars_drive_salamandra_unweighted
+pars_mech_filename    : pars_mechanics_salamandra_unweighted
+pars_monitor_filename : pars_monitor_salamandra_unweighted
+
+
+# Optionally load/save existing weight matrix
+load_connectivity_indices : False
+
+simulation_data_file_tag : ''
+
+# Network excitation
+stim_a_mul : 1.0
+stim_a_off : 0.0
+stim_l_mul : 1.0
+stim_l_off : 0.0
+
+stim_lr_asym : 0.0
+stim_lr_off  : 0.0
+
+stim_fe_asym : 0.0
+stim_fe_off  : 0.0
+
+stim_f_mn_off : 0.0
+stim_e_mn_off : 0.0
+
+# Trailing oscillator hypothesis
+gains_drives_axis:
+- 1.0
+- 1.0
+- 1.0
+- 1.0
+- 1.0
+- 1.0
+
+gains_drives_limbs:
+- 1.0
+- 1.0
+- 1.0
+- 1.0
+
+# Input-Output gains
+mc_gain_axial : 1.0
+mc_gain_limbs : 1.0
+ps_gain_axial : 0
+ps_gain_limbs : 0
+es_gain_axial : 0
+es_gain_limbs : 0
+
+# Cocontraction
+mo_cocontraction_gain : 0.0
+mo_cocontraction_off  : 2.0
+
+# Gait pattern
+gaits :
+- swim
+- trot
+- lat
+- diag
+- amble
+- caud2rost
+- exp
+
+gaitflag : 0
+
+# Functionalities
+silencing          : True
+noise_term         : False
+synaptic_weighting : True
+
+include_callback : True
+callback_dt      : 0.01
+
+save_mech_logs   : False
+
+compute_metrics   : True
+metrics_filtering : True
+metrics_trunk_only: True
+
+include_online_act : True
+online_act_window : 0.1
+
+# Diagnostics
+
+verboserun         : True
+brian_profiling    : False
+
+
+
+

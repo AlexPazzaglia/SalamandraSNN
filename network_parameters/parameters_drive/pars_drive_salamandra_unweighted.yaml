@@ -1,0 +1,132 @@
+limb_connectivity_schemes_with_drive_offset :
+ - reference
+ - modified
+
+lfac_max : 0.11
+dfac_max : 0.11
+
+drives:
+
+ - gait: swim
+   modes:
+    - feedback: Any
+      lfac      : False
+      dfac      : False
+      drives_axis:
+      - 5.0   # 8.30    # 4.162
+      - 5.0   # 7.20    # 3.64
+      - 5.0   # 7.20    # 3.64
+      - 5.0   # 8.30    # 4.162
+      - 5.0   # 7.20    # 3.64
+      - 5.0   # 7.20    # 3.64
+      drives_limbs:
+      - 0.0
+      - 0.0
+      - 0.0
+      - 0.0
+
+ - gait: trot
+   modes:
+    - feedback   : noFB
+      lfac       : False
+      dfac       : False
+      drives_axis:
+      - 4.0    # 2.1
+      - 4.0    # 2.7
+      - 4.0    # 2.9
+      - 4.0    # 2.1
+      - 4.2    # 2.7
+      - 4.4    # 2.9
+      drives_limbs:
+      - 5.00     # 4.2
+      - 5.00     # 4.2
+      - 5.00     # 4.2
+      - 5.00     # 4.2
+
+    - feedback   : FB
+      lfac       : False
+      dfac       : False
+      drives_axis:
+      - 3.60    # 1.8
+      - 3.60    # 1.8
+      - 5.40    # 2.7
+      - 5.40    # 2.7
+      - 5.60    # 2.8
+      - 5.60    # 2.8
+      drives_limbs:
+      - 5.0     # 4.0
+      - 5.0     # 4.0
+      - 5.0     # 4.0
+      - 5.0     # 4.0
+
+ - gait: lat
+   modes:
+    - feedback   : Any
+      lfac       : True
+      dfac       : False
+      drives_axis:
+      - 4.2    # 4.20
+      - 4.0    # 5.40
+      - 4.0    # 5.80
+      - 4.0    # 4.20
+      - 4.2    # 5.40
+      - 4.4    # 5.80
+      drives_limbs:
+      - 4.8     # 4.2
+      - 4.8     # 4.2
+      - 4.8     # 4.2
+      - 4.8     # 4.2
+
+ - gait: diag
+   modes:
+    - feedback   : Any
+      lfac       : False
+      dfac       : True
+      drives_axis:
+      - 4.20    # 2.1
+      - 5.40    # 2.7
+      - 5.80    # 2.9
+      - 4.20    # 2.1
+      - 5.40    # 2.7
+      - 5.80    # 2.9
+      drives_limbs:
+      - 8.4     # 4.2
+      - 8.4     # 4.2
+      - 8.4     # 4.2
+      - 8.4     # 4.2
+
+ - gait : amble
+   modes:
+    - feedback   : Any
+      lfac       : False
+      dfac       : False
+      drives_axis:
+      - 0.0
+      - 0.0
+      - 0.0
+      - 0.0
+      - 0.0
+      - 0.0
+      drives_limbs:
+      - 5.0     # 4.0
+      - 5.0     # 4.0
+      - 5.0     # 4.0
+      - 5.0     # 4.0
+
+ - gait : caud2rost
+   modes:
+    - feedback   : Any
+      lfac       : False
+      dfac       : False
+      drives_axis:
+      - 5.60    # 2.8
+      - 6.80    # 3.4
+      - 5.00    # 4.0
+      - 5.60    # 2.8
+      - 6.80    # 3.4
+      - 5.00    # 4.0
+      drives_limbs:
+      - 0.0
+      - 0.0
+      - 0.0
+      - 0.0

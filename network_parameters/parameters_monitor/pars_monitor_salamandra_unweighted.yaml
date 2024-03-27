@@ -1,0 +1,92 @@
+# Raster plots
+monitor_spikes :
+  active   : True
+  save     : True
+  indices  : True
+  plotpars :
+    showit        : True
+    animate       : False
+    gridon        : True
+    densegrid     : False
+    one_sided     : True
+    ex_only       : True
+    insert_limbs  : False
+    sampling_ratio: 0.10
+
+# Smooth pool activations
+monitor_poolsactivation :
+  active   : True
+  plotpars :
+    showit        : True
+    densegrid     : False
+    gridon        : False
+    animate       : False
+    sampling_ratio: 0.50
+
+# Evolution of instantaneous frequency
+monitor_freqevolution :
+  active   : True
+  plotpars :
+    showit : True
+
+# Evolution of intersegmental phase lag
+monitor_iplevolution :
+  active   : True
+  plotpars :
+    showit         : True
+    trunk_only     : True
+    jump_at_girdles: False
+
+# Neuronal variables
+monitor_states :
+  active   : False
+  save     : True
+  indices  : True
+  rate     : 1                    # Multiple of simulation timestep
+  variables: [v, w1, w2, I_ext, I_tot,]
+  plotpars :
+    showit  : True
+    figure  : True
+    animate : False
+
+# Muscle cells
+monitor_musclecells :
+  active   : True
+  save     : True
+  indices  : True
+  variables: [v, I_tot]           # g_ampa_mc_tot g_nmda_mc_tot
+  rate     : 1                    # Multiple of simulation timestep
+  plotpars :
+    showit        : True
+    filtering     : False
+    sampling_ratio: 0.50
+
+# Network connectivity
+monitor_connectivity :
+  active   : True
+  plotpars :
+    showit   : True
+    gridon   : False
+    densegrid: False
+    muscles  : True
+
+# FARMS data
+monitor_farmsim :
+  active   : True
+  plotpars :
+    joint_angles   : True
+    com_trajectory : True
+    trajectory_fit : True
+    animate        : False
+
+# Online metrics
+monitor_online_metrics :
+  active   : False
+  plotpars :
+    activity : True
+    period   : True
+    duty     : True
+
+
+
+

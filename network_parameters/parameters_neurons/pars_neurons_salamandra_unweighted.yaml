@@ -1,0 +1,126 @@
+# Neural model parameters
+neuron_type_network   : ad_if
+neuron_type_muscle    : muscle
+synaptic_labels       : [ampa, nmda, glyc]
+n_adaptation_variables: 2
+
+# Common neuronal parameters: Equal values in all the populations
+shared_neural_params :
+
+    # Locomotor network
+    -   neuron_group : 0
+        V_rest       : [-70.0, mV]
+        V_reset      : [-70.0, mV]
+        V_thres      : [-38.0, mV]
+        std_val      : [  0.2, '']
+
+    # Muscle cells
+    -   neuron_group : 1
+        tau_mc_act   : [100.0,  ms]  # [30.0,  ms]
+        tau_mc_deact : [100.0,  ms]  # [30.0,  ms]
+        w_ampa       : [ 0.35,  '']  # [0.07,  '']
+        w_nmda       : [ 0.15,  '']  # [0.02,  '']
+        w_glyc       : [ 1.00,  '']  # [0.11,  '']
+
+# Variable parameters: population-dependent values or values modified during execution
+# Measurement units of internal variables that are dynamically modified
+variable_neural_params_units :
+
+    -   neuron_group : 0
+
+        t_refr   : second
+        tau_memb : second
+        R_memb   : ohm
+
+        tau1     : second
+        tau2     : second
+        delta_w1 : ampere
+        delta_w2 : ampere
+
+        w_ampa   : 1
+        w_nmda   : 1
+        w_glyc   : 1
+
+variable_neural_params_list :
+
+    # Axial neurons (Bicanski 2013, Dougherty and Kiehn 2010, Zhong 2010)
+    -   mod_name : cpg.axial
+        t_refr   : [   5.00,   ms]   # Max firing rate: 200 Hz
+        tau_memb : [[ 26.8],   ms]
+        R_memb   : [[  1.6], Gohm]   # Rheobase current at 20 pA
+
+        tau1     : [[200.0],   ms]   # 150.0
+        tau2     : [[400.0],   ms]   # 300.0
+        delta_w1 : [   3.00, pamp]   #  5.00   Adaptive (strong)
+        delta_w2 : [   0.00, pamp]
+
+        w_ampa   : [   0.07,   '']
+        w_nmda   : [   0.02,   '']
+        w_glyc   : [   0.11,   '']
+        sigma    : [      0,   mV]
+
+    # Limb parameters (Bicanski 2013, Dougherty and Kiehn 2010, Zhong 2010)
+    -   mod_name : cpg.limbs
+        t_refr   : [    5.00,   ms]  # Max firing rate: 200 Hz
+        tau_memb : [[  37.5],   ms]
+        R_memb   : [[   2.1], Gohm]  # Rheobase current at 15 pA
+
+        tau1     : [[ 500.0],   ms]
+        tau2     : [[4000.0],   ms]
+        delta_w1 : [    0.70, pamp]  # Adaptive (weak)
+        delta_w2 : [    0.10, pamp]
+
+        w_ampa   : [    0.10,   '']
+        w_nmda   : [    0.03,   '']
+        w_glyc   : [    0.15,   '']
+        sigma    : [      0,    mV]
+
+    # Reticulospinal neurons (Flaive and Ryczko 2020)
+    -   mod_name : rs
+        t_refr   : [    5.00,   ms]  # Max firing rate: 200 Hz
+        tau_memb : [[  26.8],   ms]
+        R_memb   : [[   8.0], Gohm]  # Rheobase current at 4 pA
+
+        tau1     : [[ 150.0],   ms]
+        tau2     : [[2000.0],   ms]
+        delta_w1 : [    0.00, pamp]  # Non-adaptive
+        delta_w2 : [    0.00, pamp]
+
+        w_ampa   : [    0.07,   '']
+        w_nmda   : [    0.02,   '']
+        w_glyc   : [    0.11,   '']
+        sigma    : [      0,    mV]
+
+    # Motor neurons (Chevallier 2006)
+    -   mod_name : mn
+        t_refr   : [    5.00,   ms]  # Max firing rate: 50 Hz (20.00)
+        tau_memb : [[  26.8],   ms]
+        R_memb   : [[  16.0], Gohm]  # Rheobase current at 20 pA (1.6)
+
+        tau1     : [[ 150.0],   ms]
+        tau2     : [[2000.0],   ms]
+        delta_w1 : [    0.00, pamp]  # Non-adaptive
+        delta_w2 : [    0.00, pamp]
+
+        w_ampa   : [    0.07,   '']
+        w_nmda   : [    0.02,   '']
+        w_glyc   : [    0.11,   '']
+        sigma    : [      0,    mV]
+
+    # Propriosensory neurons (Picton 2021)
+    -   mod_name : ps
+        t_refr   : [   50.00,   ms]  # Max firing rate: 20 Hz
+        tau_memb : [[  26.8],   ms]
+        R_memb   : [[   0.6], Gohm]  # Rheobase current at 50 pA
+
+        tau1     : [[ 150.0],   ms]
+        tau2     : [[2000.0],   ms]
+        delta_w1 : [    0.00, pamp]  # Non-adaptive
+        delta_w2 : [    0.00, pamp]
+
+        w_ampa   : [    0.07,   '']
+        w_nmda   : [    0.02,   '']
+        w_glyc   : [    0.11,   '']
+        sigma    : [      0,    mV]
+
+

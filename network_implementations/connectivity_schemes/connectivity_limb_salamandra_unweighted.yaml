@@ -1,0 +1,262 @@
+# LIMB TO AXIS
+lb2ax :
+
+  # Descending Limb to Axis ipsilateral (excitatory)
+  - name      : LB_ex -> AX_all Ipsi Down
+    synapse   : syn_ex
+    type      : sat_gaussian_identity
+    parameters:
+      y_type  : y_neur
+      amp     : 0.1
+      sigma_up: 0.00
+      sigma_dw: 2.00
+      limits  : [null, null, 0, 1]
+
+    cond_list : [
+      ['dweq', ipsi, lbf_0, ex, ax, [ex, in]]
+    ]
+    cond_str  : ''
+
+  # Descending Limb to Axis contralateral (inhibitory)
+  - name      : LB_in -> AX_all Contra Down
+    synapse   : syn_in
+    type      : sat_gaussian_identity
+    parameters:
+      y_type  : y_neur
+      amp     : 0.10
+      sigma_up: 0.00
+      sigma_dw: 2.00
+      limits  : [null, null, 0, 1]
+
+    cond_list : [
+      ['dweq', contra, lbf_0, in, ax, [ex, in]]
+    ]
+    cond_str  : ''
+
+  # Ascending Limb to Axis contralateral (excitatory)
+  - name      : LB_ex -> AX_all Contra Up
+    synapse   : syn_ex
+    type      : sat_gaussian_identity
+    parameters:
+      y_type  : y_neur
+      amp     : 0.10
+      sigma_up: 2.00
+      sigma_dw: 0.00
+      limits  : [0, 1, null, null]
+
+    cond_list : [
+      ['up', contra, lbf_0, ex, ax, [ex, in]]
+    ]
+    cond_str  : ''
+
+  # Ascending Limb to Axis ipsilateral (inhibitory)
+  - name      : LB_in -> AX_all Ipsi Up
+    synapse   : syn_in
+    type      : sat_gaussian_identity
+    parameters:
+      y_type  : y_neur
+      amp     : 0.10
+      sigma_up: 2.00
+      sigma_dw: 0.00
+      limits  : [0, 1, null, null]
+
+    cond_list : [
+      ['up', ipsi, lbf_0, in, ax, [ex, in]]
+    ]
+    cond_str  : ''
+
+
+
+## INTRA-LIMBS (same DOF)
+# NOTE: SAME GIRLE CONDITION
+
+lb2lb_intra_limb_intra_dof:
+
+  # Excitatory
+  - name      : LB_ex -> LB_ex Intra Limb Intra DOF
+    synapse   : syn_ex
+    type      : connect_identity
+    parameters:
+      amp     : 0.42
+
+    cond_list : [
+      ['', same_limb.agonist, lb, ex, lb, ex]
+    ]
+    cond_str  : ''
+
+  - name      : LB_ex -> LB_in Intra Limb Intra DOF
+    synapse   : syn_ex
+    type      : connect_identity
+    parameters:
+      amp     : 0.12
+
+    cond_list : [
+      ['', same_limb.agonist, lb, ex, lb, in]
+    ]
+    cond_str  : ''
+
+  # Inhibitory
+  # NOTE: Actually varying with the selected gait
+  - name      : LB_in -> LB_all Intra Limb Intra DOF
+    synapse   : syn_in
+    type      : connect_identity
+    parameters:
+      amp     : 0.50 # 0.35
+
+    cond_list : [
+      ['', same_limb.antagonist, lb, in, lb, [in, ex]]
+    ]
+    cond_str  : ''
+
+## INTRA-LIMBS (different DOF)
+
+lb2lb_intra_limb_inter_dof:
+
+  - name      : LB_ex -> LB_all Intra Limb Inter DOF
+    synapse   : syn_ex
+    type      : connect_identity
+    parameters:
+      amp                  : 0.05
+      intra_lb_connections : [
+          [ 0, 1, 1, 1],  # from roll
+          [ 0, 0, 0, 0],  # from pitch
+          [ 0, 0, 0, 0],  # from yaw
+          [ 0, 0, 0, 0],  # from elbow
+      ]
+
+    cond_list : [
+      ['', same_limb.ipsi_noneq, lb, ex, lb, [in, ex]]
+    ]
+    cond_str  : ''
+
+  - name      : LB_in -> LB_all Intra Limb Inter DOF
+    synapse   : syn_in
+    type      : connect_identity
+    parameters:
+      amp                  : 0.05
+      intra_lb_connections : [
+          [ 0, 0, 0, 0],  # from roll
+          [ 0, 0, 0, 0],  # from pitch
+          [ 0, 0, 0, 0],  # from yaw
+          [ 0, 0, 0, 0],  # from elbow
+      ]
+
+    cond_list : [
+      ['', same_limb.contra_noneq, lb, in, lb, [in, ex]]
+    ]
+    cond_str  : ''
+
+## INTER-LIMBS
+# Originally: syn_inhibition connected flexors only, excitation connected flexors and extensors
+
+lb2lb_inter_limb_intra_dof:
+
+  - name      : LB_ex -> LB_all Inter Limb
+    synapse   : syn_ex
+    type      : connect_identity
+    parameters:
+      amp     : p_ex_inter_lb_max
+    cond_list : [
+      [ '', '', lb_0, ex, lb_0, [ex, in] ]
+    ]
+    cond_str  : ''
+
+  - name      : LB_in -> LB_all Inter Limb
+    synapse   : syn_in
+    type      : connect_identity
+    parameters:
+      amp     : p_in_inter_lb_max
+
+    cond_list : [
+      [ '', '', lb_0, in, lb_0, [ex, in] ]
+    ]
+    cond_str  : ''
+
+# RETICULOSPINAL TO LIMBS
+rs2lb:
+  - name      : LB_rs -> LB_all
+    synapse   : syn_ex
+    type      : connect_identity
+    parameters:
+      amp     : 0.78
+
+    cond_list : [
+       [ '', same_limb.ipsi, lb, rs, lb, [ex, in] ]
+    ]
+    cond_str  : ''
+
+# LIMBS TO RETICULOSPINAL
+lb2rs:
+  - name      : LB_ex -> LB_rs Ipsi
+    synapse   : syn_ex
+    type      : connect_identity
+    parameters:
+      amp     : 0.04
+
+    cond_list : [
+      [ '', same_limb.ipsi, lb_0, ex, lb, rs ]
+    ]
+    cond_str  : ''
+
+  - name      : LB_in -> LB_rs Contra
+    synapse   : syn_in
+    type      : connect_identity
+    parameters:
+      amp     : 0.04
+
+    cond_list : [
+      [ '', same_limb.contra, lb_0, in, lb, rs ]
+    ]
+    cond_str  : ''
+
+# LIMBS TO MOTOR NEURONS
+lb2mn:
+  - name      : LB_ex -> LB_mn Ipsi
+    synapse   : syn_ex
+    type      : connect_identity
+    parameters:
+      amp     : 0.50
+
+    cond_list : [
+      ['', same_limb.agonist, lb, ex, lb, mn]
+    ]
+    cond_str  : ''
+
+# PROPRIOSENSORY TO LIMBS
+ps2lb:
+  - name      : LB_ps -> LB_all Contra
+    synapse   : syn_in
+    type      : connect_identity
+    parameters:
+      amp     : 0.50
+
+    cond_list : [
+      ['', same_limb.antagonist, lb, ps, lb, [ex,in] ]
+    ]
+    cond_str  : ''
+
+# PROPRIOSENSORY TO MOTOR NEURONS
+ps2mn:
+  - name      : LB_ps -> LB_mn Contra Limb
+    synapse   : syn_in
+    type      : connect_identity
+    parameters:
+      amp     : 0.80
+
+    cond_list : [
+      ['', same_limb.antagonist, lb, ps, lb, mn]
+    ]
+    cond_str  : ''
+
+## MOTOR NEURONS TO MUSCLE CELLS
+mn2mc:
+  - name      : LB_mn -> LB_mc Ipsi Limb
+    synapse   : syn_mc_ex
+    type      : connect_identity
+    parameters:
+      amp     : 0.80
+
+    cond_list : [
+      ['', same_limb.agonist, lb, mn, lb, mc]
+    ]
+    cond_str  : ''

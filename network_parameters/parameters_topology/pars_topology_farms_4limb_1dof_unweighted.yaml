@@ -1,0 +1,230 @@
+# The topology lists all the modules
+# The modules list all their populations
+# The populations list all their sub-populations
+
+# If not specified:
+#   position_limits = pool_length * [pool_ind, pool_ind+1]
+#   axial:
+#     pools  = axial_segments,
+#     copies = 1
+#     sides  = ['l', 'r']
+#     pool_rows   = 1
+#   limbs:
+#     pools  = limb_segments,
+#     copies = limbs
+#     sides_list  = ['f', 'e']
+#     rows   = 1
+
+
+length_axial     : 0.1
+segments_axial   : 40
+segments_per_limb: 1
+limbs            : 4
+limbs_positions  :
+  - 0.000
+  - 0.000
+  - 0.375
+  - 0.375
+
+# Inter-limb connectivity
+pars_limb_connectivity_filename: pars_limb_connectivity_salamandra_unweighted
+limb_connectivity_scheme       : inhibitory
+
+# Axis and Limb connectivity
+connectivity_axial_filename     : connectivity_axis_salamandra_unweighted
+connectivity_limbs_filename     : connectivity_limb_salamandra_unweighted
+
+# Trunk-tail connectivity
+trunk_tail_discontinuity_flag : 1
+
+# Ascending feedback
+ascending_feedback :
+- noFB
+- FB
+
+ascending_feedback_flag   : 0
+
+# Network organization
+topology:
+  # CPG
+  - name: cpg
+    neuron_group: 0
+    pool_rows: 10
+
+    axial:
+      plotting:
+        color: black
+        linestyle: '-'
+        color_pools:
+          # ROST
+          - "#2c5aa0ff"
+          - "#2c5aa0ff"
+          - "#2c5aa0ff"
+          - "#2c5aa0ff"
+          - "#2c5aa0ff"
+          # MIDT
+          - "#87aadeff"
+          - "#87aadeff"
+          - "#87aadeff"
+          - "#87aadeff"
+          - "#87aadeff"
+          # ENDT
+          - "#d7e3f4ff"
+          - "#d7e3f4ff"
+          - "#d7e3f4ff"
+          - "#d7e3f4ff"
+          - "#d7e3f4ff"
+          # PELV
+          - "#ffe680ff"
+          - "#ffe680ff"
+          - "#ffe680ff"
+          - "#ffe680ff"
+          - "#ffe680ff"
+          - "#ffe680ff"
+          - "#ffe680ff"
+          - "#ffe680ff"
+          # TAIL
+          - "#ffccaaff"
+          - "#ffccaaff"
+          - "#ffccaaff"
+          - "#ffccaaff"
+          - "#ffccaaff"
+          - "#ffccaaff"
+          - "#ffccaaff"
+          - "#ffccaaff"
+          - "#ffccaaff"
+          # CAUD
+          - "#e9afafff"
+          - "#e9afafff"
+          - "#e9afafff"
+          - "#e9afafff"
+          - "#e9afafff"
+          - "#e9afafff"
+          - "#e9afafff"
+          - "#e9afafff"
+
+    limbs:
+      plotting:
+        color: navy
+        linestyle: '--'
+        color_pools:
+          - "#c6e9afff"
+          - "#c6e9afff"
+          - "#6f916fff"
+          - "#6f916fff"
+
+    sub_parts_description:
+      - name: ex
+        n_pool: 60
+
+      - name: in
+        n_pool: 60
+
+  # RS
+  - name: rs
+    neuron_group: 0
+
+    axial:
+      pools : 6
+      pools_names:
+        - rost
+        - midt
+        - endt
+        - pelv
+        - tail
+        - caud
+      pools_positions_limits:
+        # rost
+        - - 0.000   # 0.0000  # 0/400
+          - 0.125   # 0.2475  # 99/400
+        # midt
+        - - 0.125   # 0.0050  # 2/400
+          - 0.250   # 0.3300  # 132/400
+        # endt
+        - - 0.250   # 0.1775  # 71/400
+          - 0.375   # 0.5175  # 207/400
+        # pelv
+        - - 0.375   # 0.2125  # 85/400
+          - 0.583   # 0.5475  # 219/4002
+        # tail
+        - - 0.583   # 0.3725  # 149/400
+          - 0.792   # 0.9975  # 399/400
+        # caud
+        - - 0.792   # 0.7500  # 300/400
+          - 1.000   # 0.9975  # 399/400
+      plotting:
+        color: dimgrey
+        linestyle: '-'
+        color_pools:
+          - "#2c5aa0ff"
+          - "#87aadeff"
+          - "#d7e3f4ff"
+          - "#ffe680ff"
+          - "#ffccaaff"
+          - "#e9afafff"
+    limbs:
+      pools : 1
+      pools_names:
+        - 'LF'
+        - 'RF'
+        - 'LH'
+        - 'RH'
+      plotting:
+        color: royalblue
+        linestyle: '-'
+        color_pools:
+          - "#c6e9afff"
+          - "#c6e9afff"
+          - "#6f916fff"
+          - "#6f916fff"
+
+    sub_parts_description:
+      - name: rs
+        n_pool: 120
+
+  # MN
+  - name: mn
+    neuron_group: 0
+
+    axial:
+      plotting:
+        color: indianred
+        linestyle: '-'
+    limbs:
+      plotting:
+        color: orangered
+        linestyle: '--'
+
+    sub_parts_description:
+      - name: mn
+        n_pool: 10  #50
+
+  # PS
+  - name: ps
+    neuron_group: 0
+
+    axial:
+      plotting:
+        color: magenta
+        linestyle: '-'
+    limbs:
+      include: false
+      plotting:
+        color: pink
+        linestyle: '--'
+
+    sub_parts_description:
+      - name: ps
+        n_pool: 10  #40
+
+  # MC
+  - name: mc
+    neuron_group: 1
+
+    sub_parts_description:
+      - name: mc
+        n_pool: 2
+
+
+
+

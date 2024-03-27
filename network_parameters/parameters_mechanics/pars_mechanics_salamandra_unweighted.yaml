@@ -1,0 +1,83 @@
+mech_timestep     : 0.001
+mech_limbs        : 4
+mech_pca_joints   : 8
+mech_axial_joints : 8
+mech_limbs_joints : 16
+
+mech_joints_silenced: []  # DOFs that are silenced
+
+mech_lb_joints_lead : [1]         # Leader moving
+mech_lb_joints_foll : [0, 2, 3]   # Following the leader
+mech_lb_joints_free : []          # Autonomously moving
+mech_lb_joints_fixd : []          # Fixed position
+
+mech_lb_joints_swap : [0, 2, 3]  # DOFs with swapped flexor and extensor
+
+# Nominal gains for flexor and extensor of the different DOFs of the different limb pairs
+mech_lb_pairs_gains_mean_fe_lead :
+- [ 2.00 ]  # Forelimb DOFs
+- [ 0.60 ]  # Hindlimb DOFs
+
+mech_lb_pairs_gains_mean_fe_foll :
+- [ 2.00, 1.00, 2.00 ]  # Forelimb DOFs
+- [ 2.00, 1.00, 0.00 ]  # Hindlimb DOFs
+
+mech_lb_pairs_gains_mean_fe_free :
+- []
+- []
+
+# Asymmetry of gains for flexor and extensor of the different DOFs of the different limb pairs
+# NOTE:
+# Joint 0 = Leg forward (0) / Leg backward (1)                 -> Positive asymmetry favors 0
+# Joint 1 = Leg out of chest (0) / Leg horizontal (1)          -> Positive asymmetry favors 1
+# Joint 2 = Leg rotated forward (0) / Leg rotated backward (1) -> Positive asymmetry favors 0
+# Joint 3 = Elbow flex (0) / Elbow extend (1)                  -> Positive asymmetry favors 0
+
+mech_lb_pairs_gains_asym_fe_lead :
+- [ -0.00 ]   # Forelimb DOFs
+- [ -0.50 ]   # Hindlimb DOFs
+
+mech_lb_pairs_gains_asym_fe_foll :
+- [ 0.00, -1.00, +1.00 ]  # Forelimb DOFs
+- [ 0.00, -0.00, +1.00 ]  # Hindlimb DOFs
+
+mech_lb_pairs_gains_asym_fe_free :
+- []
+- []
+
+# Delay between leader and follower
+mech_activation_delays :
+- 0.25
+- 0.10
+- 0.05
+
+# Motor offsets
+lb_offset_walk  :
+- [ +0.0,                 +0.0                 ]
+- [ -0.09817477042468103, -0.09817477042468103 ]
+- [ +0.7853981633974483,  +0.0                 ]
+- [ +0.7853981633974483,  +0.7853981633974483  ]
+
+lb_offset_swim :
+- [-1.2566370614359172, -1.2566370614359172]
+- [+0.0,                +0.0               ]
+- [+0.0,                +0.0               ]
+- [+0.0,                +0.0               ]
+
+mech_axial_length: 0.1
+
+mech_axial_joints_position:
+- 0.0150
+- 0.0257
+- 0.0364
+- 0.0471
+- 0.0578
+- 0.0685
+- 0.0792
+- 0.0900
+
+mech_limbs_joints_position:
+- 0.0150
+- 0.0150
+- 0.0461
+- 0.0461

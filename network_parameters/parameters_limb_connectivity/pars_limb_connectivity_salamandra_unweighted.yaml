@@ -1,0 +1,647 @@
+# Reference connectivity from Bicanski' s thesis
+reference :
+
+    p_connections_limbs :
+        swim :
+            ## EXCITATORY
+            ex_f2f :
+                - [   0,    0,    0, 0.05]  # From LF
+                - [   0,    0, 0.05,    0]  # From RF
+                - [   0, 0.05,    0,    0]  # From LH
+                - [0.05,    0,    0,    0]  # From RH
+
+            ex_e2e :
+                - [   0,    0,    0, 0.05]  # From LF
+                - [   0,    0, 0.05,    0]  # From RF
+                - [   0, 0.05,    0,    0]  # From LH
+                - [0.05,    0,    0,    0]  # From RH
+
+            ex_f2e : null
+            ex_e2f : null
+
+            ## INHIBITORY
+            in_f2f :
+                - [   0, 0.20,    0,    0]  # From LF
+                - [0.20,    0,    0,    0]  # From RF
+                - [   0,    0,    0, 0.20]  # From LH
+                - [   0,    0, 0.20,    0]  # From RH
+
+            in_e2e : null
+            in_f2e : null
+            in_e2f : null
+
+
+        trot :
+            ## EXCITATORY
+            ex_f2f :
+                - [   0,    0,    0,  0.05]  # From LF
+                - [   0,    0,  0.05,    0]  # From RF
+                - [   0,  0.05,    0,    0]  # From LH
+                - [ 0.05,    0,    0,    0]  # From RH
+
+            ex_e2e :
+                - [   0,    0,    0,  0.05]  # From LF
+                - [   0,    0,  0.05,    0]  # From RF
+                - [   0,  0.05,    0,    0]  # From LH
+                - [ 0.05,    0,    0,    0]  # From RH
+
+            ex_f2e : null
+            ex_e2f : null
+
+            ## INHIBITORY
+            in_f2f :
+                - [   0, 0.20,    0,    0]  # From LF
+                - [0.20,    0,    0,    0]  # From RF
+                - [   0,    0,    0, 0.20]  # From LH
+                - [   0,    0, 0.20,    0]  # From RH
+
+            in_e2e : null
+            in_f2e : null
+            in_e2f : null
+
+
+        lat :
+            ## EXCITATORY
+            ex_f2f :
+                - [   0,    0,    0, 0.05]  # From LF
+                - [   0,    0, 0.05,    0]  # From RF
+                - [   0,    0,    0,    0]  # From LH
+                - [   0, 0.05,    0,    0]  # From RH
+
+            ex_e2e :
+                - [   0,    0,    0, 0.05]  # From LF
+                - [   0,    0, 0.05,    0]  # From RF
+                - [   0,    0,    0,    0]  # From LH
+                - [   0, 0.05,    0,    0]  # From RH
+
+            ex_f2e : null
+            ex_e2f : null
+
+            ## INHIBITORY
+            in_f2f : null
+            in_e2e : null
+            in_f2e : null
+            in_e2f : null
+
+
+        diag :
+            ## EXCITATORY
+            ex_f2f :
+                - [   0,    0,    0,    0]  # From LF
+                - [   0,    0,    0, 0.10]  # From RF
+                - [   0, 0.10,    0,    0]  # From LH
+                - [0.10,    0,    0,    0]  # From RH
+
+            ex_e2e :
+                - [   0,    0,    0,    0]  # From LF
+                - [   0,    0,    0, 0.10]  # From RF
+                - [   0, 0.10,    0,    0]  # From LH
+                - [0.10,    0,    0,    0]  # From RH
+
+            ex_f2e : null
+            ex_e2f : null
+
+            ## INHIBITORY
+            in_f2f : null
+            in_e2e : null
+            in_f2e : null
+            in_e2f : null
+
+
+        amble :
+            ## EXCITATORY
+            ex_f2f :
+                - [   0,    0, 0.05,    0]  # From LF
+                - [   0,    0,    0, 0.05]  # From RF
+                - [0.05,    0,    0,    0]  # From LH
+                - [   0, 0.05,    0,    0]  # From RH
+
+            ex_e2e :
+                - [   0,    0, 0.05,    0]  # From LF
+                - [   0,    0,    0, 0.05]  # From RF
+                - [0.05,    0,    0,    0]  # From LH
+                - [   0, 0.05,    0,    0]  # From RH
+
+            ex_f2e : null
+            ex_e2f : null
+
+            ## INHIBITORY
+            in_f2f :
+                - [   0, 0.20,    0,    0]  # From LF
+                - [0.20,    0,    0,    0]  # From RF
+                - [   0,    0,    0, 0.20]  # From LH
+                - [   0,    0, 0.20,    0]  # From RH
+
+            in_e2e : null
+            in_f2e : null
+            in_e2f : null
+
+
+        caud2rost :
+            ## EXCITATORY
+            ex_f2f :
+                - [   0,    0,    0, 0.05]  # From LF
+                - [   0,    0, 0.05,    0]  # From RF
+                - [   0, 0.05,    0,    0]  # From LH
+                - [0.05,    0,    0,    0]  # From RH
+
+            ex_e2e :
+                - [   0,    0,    0, 0.05]  # From LF
+                - [   0,    0, 0.05,    0]  # From RF
+                - [   0, 0.05,    0,    0]  # From LH
+                - [0.05,    0,    0,    0]  # From RH
+
+            ex_f2e : null
+            ex_e2f : null
+
+            ##INHIBITORY
+            in_f2f :
+                - [   0, 0.20,    0,    0]  # From LF
+                - [0.20,    0,    0,    0]  # From RF
+                - [   0,    0,    0, 0.20]  # From LH
+                - [   0,    0, 0.20,    0]  # From RH
+
+            in_e2e : null
+            in_f2e : null
+            in_e2f : null
+
+# Reference connectivity from Bicanski's thesis modified to be symmetric
+modified :
+
+    p_connections_limbs :
+        swim :
+            ## EXCITATORY
+            ex_f2f :
+                - [   0,    0,    0, 0.05]  # From LF
+                - [   0,    0, 0.05,    0]  # From RF
+                - [   0, 0.05,    0,    0]  # From LH
+                - [0.05,    0,    0,    0]  # From RH
+
+            ex_e2e :
+                - [   0,    0,    0, 0.05]  # From LF
+                - [   0,    0, 0.05,    0]  # From RF
+                - [   0, 0.05,    0,    0]  # From LH
+                - [0.05,    0,    0,    0]  # From RH
+
+            ex_f2e : null
+            ex_e2f : null
+
+            ## INHIBITORY
+            in_f2f :
+                - [   0, 0.20,    0,    0]  # From LF
+                - [0.20,    0,    0,    0]  # From RF
+                - [   0,    0,    0, 0.20]  # From LH
+                - [   0,    0, 0.20,    0]  # From RH
+
+            in_e2e : null
+            in_f2e : null
+            in_e2f : null
+
+
+        trot :
+            ## EXCITATORY
+            ex_f2f :
+                - [   0,    0,    0,  0.05]  # From LF
+                - [   0,    0,  0.05,    0]  # From RF
+                - [   0,  0.05,    0,    0]  # From LH
+                - [ 0.05,    0,    0,    0]  # From RH
+
+            ex_e2e :
+                - [   0,    0,    0,  0.05]  # From LF
+                - [   0,    0,  0.05,    0]  # From RF
+                - [   0,  0.05,    0,    0]  # From LH
+                - [ 0.05,    0,    0,    0]  # From RH
+
+            ex_f2e : null
+            ex_e2f : null
+
+            ## INHIBITORY
+            in_f2f :
+                - [   0, 0.20,    0,    0]  # From LF
+                - [0.20,    0,    0,    0]  # From RF
+                - [   0,    0,    0, 0.20]  # From LH
+                - [   0,    0, 0.20,    0]  # From RH
+
+            in_e2e : null
+            in_f2e : null
+            in_e2f : null
+
+
+        lat :
+            ## EXCITATORY
+            ex_f2f :
+                - [   0,    0,    0, 0.05]  # From LF
+                - [   0,    0, 0.05,    0]  # From RF
+                - [0.05,    0,    0,    0]  # From LH
+                - [   0, 0.05,    0,    0]  # From RH
+
+            ex_e2e :
+                - [   0,    0,    0, 0.05]  # From LF
+                - [   0,    0, 0.05,    0]  # From RF
+                - [0.05,    0,    0,    0]  # From LH
+                - [   0, 0.05,    0,    0]  # From RH
+
+            ex_f2e : null
+            ex_e2f : null
+
+            ## INHIBITORY
+            in_f2f : null
+            in_e2e : null
+            in_f2e : null
+            in_e2f : null
+
+
+        diag :
+            ## EXCITATORY
+            ex_f2f :
+                - [   0,    0, 0.10,    0]  # From LF
+                - [   0,    0,    0, 0.10]  # From RF
+                - [   0, 0.10,    0,    0]  # From LH
+                - [0.10,    0,    0,    0]  # From RH
+
+            ex_e2e :
+                - [   0,    0, 0.10,    0]  # From LF
+                - [   0,    0,    0, 0.10]  # From RF
+                - [   0, 0.10,    0,    0]  # From LH
+                - [0.10,    0,    0,    0]  # From RH
+
+            ex_f2e : null
+            ex_e2f : null
+
+            ## INHIBITORY
+            in_f2f : null
+            in_e2e : null
+            in_f2e : null
+            in_e2f : null
+
+
+        amble :
+            ## EXCITATORY
+            ex_f2f :
+                - [   0,    0, 0.05,    0]  # From LF
+                - [   0,    0,    0, 0.05]  # From RF
+                - [0.05,    0,    0,    0]  # From LH
+                - [   0, 0.05,    0,    0]  # From RH
+
+            ex_e2e :
+                - [   0,    0, 0.05,    0]  # From LF
+                - [   0,    0,    0, 0.05]  # From RF
+                - [0.05,    0,    0,    0]  # From LH
+                - [   0, 0.05,    0,    0]  # From RH
+
+            ex_f2e : null
+            ex_e2f : null
+
+            ## INHIBITORY
+            in_f2f :
+                - [   0, 0.20,    0,    0]  # From LF
+                - [0.20,    0,    0,    0]  # From RF
+                - [   0,    0,    0, 0.20]  # From LH
+                - [   0,    0, 0.20,    0]  # From RH
+
+            in_e2e : null
+            in_f2e : null
+            in_e2f : null
+
+
+        caud2rost :
+            ## EXCITATORY
+            ex_f2f :
+                - [   0,    0,    0, 0.05]  # From LF
+                - [   0,    0, 0.05,    0]  # From RF
+                - [   0, 0.05,    0,    0]  # From LH
+                - [0.05,    0,    0,    0]  # From RH
+
+            ex_e2e :
+                - [   0,    0,    0, 0.05]  # From LF
+                - [   0,    0, 0.05,    0]  # From RF
+                - [   0, 0.05,    0,    0]  # From LH
+                - [0.05,    0,    0,    0]  # From RH
+
+            ex_f2e : null
+            ex_e2f : null
+
+            ##INHIBITORY
+            in_f2f :
+                - [   0, 0.20,    0,    0]  # From LF
+                - [0.20,    0,    0,    0]  # From RF
+                - [   0,    0,    0, 0.20]  # From LH
+                - [   0,    0, 0.20,    0]  # From RH
+
+            in_e2e : null
+            in_f2e : null
+            in_e2f : null
+
+#  Inhibitory connections only between flexors
+inhibitory:
+
+    pi_i : 0.15     # in ipsilateral
+    pi_d : 0.15     # in diagonal
+    pi_c : 0.20     # in commissural
+
+    p_connections_limbs :
+        swim :
+            ## EXCITATORY
+            ex_f2f : null
+            ex_e2e : null
+            ex_f2e : null
+            ex_e2f : null
+
+            ## INHIBITORY
+            in_f2f :
+                - [   0, pi_c, pi_i,    0]  # From LF
+                - [pi_c,    0,    0, pi_i]  # From RF
+                - [pi_i,    0,    0, pi_c]  # From LH
+                - [   0, pi_i, pi_c,    0]  # From RH
+
+            in_e2e : null
+            in_f2e : null
+            in_e2f : null
+
+
+        trot :
+            ## EXCITATORY
+            ex_f2f : null
+            ex_e2e : null
+            ex_f2e : null
+            ex_e2f : null
+
+            ## INHIBITORY
+            in_f2f :
+                - [   0, pi_c, pi_i,    0]  # From LF
+                - [pi_c,    0,    0, pi_i]  # From RF
+                - [pi_i,    0,    0, pi_c]  # From LH
+                - [   0, pi_i, pi_c,    0]  # From RH
+
+            in_e2e : null
+            in_f2e : null
+            in_e2f : null
+
+
+        lat :
+            ## EXCITATORY
+            ex_f2f : null
+            ex_e2e : null
+            ex_f2e : null
+            ex_e2f : null
+
+            ## INHIBITORY
+            in_f2f :
+                - [   0, pi_c, pi_i,    0]  # From LF
+                - [pi_c,    0,    0, pi_i]  # From RF
+                - [   0, pi_d,    0, pi_c]  # From LH
+                - [pi_d,    0, pi_c,    0]  # From RH
+
+            in_e2e : null
+            in_f2e : null
+            in_e2f : null
+
+
+        diag :
+            ## EXCITATORY
+            ex_f2f : null
+            ex_e2e : null
+            ex_f2e : null
+            ex_e2f : null
+
+            ## INHIBITORY
+            in_f2f :
+                - [   0, pi_c,    0, pi_d]  # From LF
+                - [pi_c,    0, pi_d,    0]  # From RF
+                - [pi_i,    0,    0, pi_c]  # From LH
+                - [   0, pi_i, pi_c,    0]  # From RH
+
+            in_e2e : null
+            in_f2e : null
+            in_e2f : null
+
+#  Excitatory connections only between forelimbs extensors and hindlimbs flexors
+excitatory:
+
+    pe_i : 0.12   # ex ipsilateral
+    pe_d : 0.09   # ex diagonal
+    pi_c : 0.10   # in commissural
+
+    p_connections_limbs :
+        swim :
+            ## EXCITATORY
+            ex_f2f : null
+            ex_e2e : null
+            ex_f2e :
+                - [   0,    0,    0,    0]  # From LF
+                - [   0,    0,    0,    0]  # From RF
+                - [pe_i,    0,    0,    0]  # From LH
+                - [   0, pe_i,    0,    0]  # From RH
+
+            ex_e2f :
+                - [   0,    0, pe_i,    0]  # From LF
+                - [   0,    0,    0, pe_i]  # From RF
+                - [   0,    0,    0,    0]  # From LH
+                - [   0,    0,    0,    0]  # From RH
+
+
+            ## INHIBITORY
+            in_f2f :
+                - [   0, pi_c,    0,    0]  # From LF
+                - [pi_c,    0,    0,    0]  # From RF
+                - [   0,    0,    0, pi_c]  # From LH
+                - [   0,    0, pi_c,    0]  # From RH
+
+            in_e2e : null
+            in_f2e : null
+            in_e2f : null
+
+
+        trot :
+            ## EXCITATORY
+            ex_f2f : null
+            ex_e2e : null
+            ex_f2e :
+                - [   0,    0,    0,    0]  # From LF
+                - [   0,    0,    0,    0]  # From RF
+                - [pe_i,    0,    0,    0]  # From LH
+                - [   0, pe_i,    0,    0]  # From RH
+
+            ex_e2f :
+                - [   0,    0, pe_i,    0]  # From LF
+                - [   0,    0,    0, pe_i]  # From RF
+                - [   0,    0,    0,    0]  # From LH
+                - [   0,    0,    0,    0]  # From RH
+
+
+            ## INHIBITORY
+            in_f2f :
+                - [   0, pi_c,    0,    0]  # From LF
+                - [pi_c,    0,    0,    0]  # From RF
+                - [   0,    0,    0, pi_c]  # From LH
+                - [   0,    0, pi_c,    0]  # From RH
+
+            in_e2e : null
+            in_f2e : null
+            in_e2f : null
+
+
+        lat :
+            ## EXCITATORY
+            ex_f2f : null
+            ex_e2e : null
+            ex_f2e :
+                - [   0,    0,    0,    0]  # From LF
+                - [   0,    0,    0,    0]  # From RF
+                - [   0, pe_d,    0,    0]  # From LH
+                - [pe_d,    0,    0,    0]  # From RH
+
+            ex_e2f :
+                - [   0,    0, pe_i,    0]  # From LF
+                - [   0,    0,    0, pe_i]  # From RF
+                - [   0,    0,    0,    0]  # From LH
+                - [   0,    0,    0,    0]  # From RH
+
+
+            ## INHIBITORY
+            in_f2f :
+                - [   0, pi_c,    0,    0]  # From LF
+                - [pi_c,    0,    0,    0]  # From RF
+                - [   0,    0,    0, pi_c]  # From LH
+                - [   0,    0, pi_c,    0]  # From RH
+
+            in_e2e :
+                - [   0, pi_c,    0,    0]  # From LF
+                - [pi_c,    0,    0,    0]  # From RF
+                - [   0,    0,    0, pi_c]  # From LH
+                - [   0,    0, pi_c,    0]  # From RH
+
+            in_f2e : null
+            in_e2f : null
+
+
+        diag :
+            ## EXCITATORY
+            ex_f2f : null
+            ex_e2e : null
+            ex_f2e :
+                - [   0,    0,    0,    0]  # From LF
+                - [   0,    0,    0,    0]  # From RF
+                - [pe_i,    0,    0,    0]  # From LH
+                - [   0, pe_i,    0,    0]  # From RH
+
+            ex_e2f :
+                - [   0,    0,    0, pe_d]  # From LF
+                - [   0,    0, pe_d,    0]  # From RF
+                - [   0,    0,    0,    0]  # From LH
+                - [   0,    0,    0,    0]  # From RH
+
+
+            ## INHIBITORY
+            in_f2f :
+                - [   0, pi_c,    0,    0]  # From LF
+                - [pi_c,    0,    0,    0]  # From RF
+                - [   0,    0,    0, pi_c]  # From LH
+                - [   0,    0, pi_c,    0]  # From RH
+
+            in_e2e :
+                - [   0, pi_c,    0,    0]  # From LF
+                - [pi_c,    0,    0,    0]  # From RF
+                - [   0,    0,    0, pi_c]  # From LH
+                - [   0,    0, pi_c,    0]  # From RH
+
+            in_f2e : null
+            in_e2f : null
+
+
+#  Excitatory and Inhibitory connections only between flexors
+mixed:
+
+    pi_i : 0.10     # in ipsilateral
+    pi_c : 0.20     # in commissural
+
+    pe_d : 0.01     # ex diagonal
+
+    p_connections_limbs :
+        swim :
+            ## EXCITATORY
+            ex_f2f :
+                - [   0,    0,    0, pe_d]  # From LF
+                - [   0,    0, pe_d,    0]  # From RF
+                - [   0, pe_d,    0,    0]  # From LH
+                - [pe_d,    0,    0,    0]  # From RH
+            ex_e2e : null
+            ex_f2e : null
+            ex_e2f : null
+
+            ## INHIBITORY
+            in_f2f :
+                - [   0, pi_c, pi_i,    0]  # From LF
+                - [pi_c,    0,    0, pi_i]  # From RF
+                - [pi_i,    0,    0, pi_c]  # From LH
+                - [   0, pi_i, pi_c,    0]  # From RH
+
+            in_e2e : null
+            in_f2e : null
+            in_e2f : null
+
+        trot :
+            ## EXCITATORY
+            ex_f2f :
+                - [   0,    0,    0, pe_d]  # From LF
+                - [   0,    0, pe_d,    0]  # From RF
+                - [   0, pe_d,    0,    0]  # From LH
+                - [pe_d,    0,    0,    0]  # From RH
+            ex_e2e : null
+            ex_f2e : null
+            ex_e2f : null
+
+            ## INHIBITORY
+            in_f2f :
+                - [   0, pi_c, pi_i,    0]  # From LF
+                - [pi_c,    0,    0, pi_i]  # From RF
+                - [pi_i,    0,    0, pi_c]  # From LH
+                - [   0, pi_i, pi_c,    0]  # From RH
+
+            in_e2e : null
+            in_f2e : null
+            in_e2f : null
+
+        lat :
+            ## EXCITATORY
+            ex_f2f :
+                - [   0,    0,    0, pe_d]  # From LF
+                - [   0,    0, pe_d,    0]  # From RF
+                - [   0, pe_d,    0,    0]  # From LH
+                - [pe_d,    0,    0,    0]  # From RH
+            ex_e2e : null
+            ex_f2e : null
+            ex_e2f : null
+
+            ## INHIBITORY
+            in_f2f :
+                - [   0, pi_c, pi_i,    0]  # From LF
+                - [pi_c,    0,    0, pi_i]  # From RF
+                - [   0,    0,    0, pi_c]  # From LH
+                - [   0,    0, pi_c,    0]  # From RH
+
+            in_e2e : null
+            in_f2e : null
+            in_e2f : null
+
+        diag :
+            ## EXCITATORY
+            ex_f2f :
+                - [   0,    0,    0, pe_d]  # From LF
+                - [   0,    0, pe_d,    0]  # From RF
+                - [   0, pe_d,    0,    0]  # From LH
+                - [pe_d,    0,    0,    0]  # From RH
+            ex_e2e : null
+            ex_f2e : null
+            ex_e2f : null
+
+            ## INHIBITORY
+            in_f2f :
+                - [   0, pi_c,    0,    0]  # From LF
+                - [pi_c,    0,    0,    0]  # From RF
+                - [pi_i,    0,    0, pi_c]  # From LH
+                - [   0, pi_i, pi_c,    0]  # From RH
+
+            in_e2e : null
+            in_f2e : null
+            in_e2f : null
