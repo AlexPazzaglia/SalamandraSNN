@@ -29,18 +29,22 @@ Scripts to run simulations in parallel (multi-processing) and use optimization t
 - run_sim_files <br />
 Scripts to run single or few simulations with some desired behaviors.
 
+## Controller types
 
-NOTE: The general convention for the naming of the controllers is the following
-- Position control = Simulation of the mechanical body with a pre-determined joints trajectory (position control)
-- Signal-driven = Simulation of the mechanical body with a pre-determined input for the muscle models (torque control)
-- Open-loop = Simulation of the spiking neural network mdoel without controlling of a body
-- Closed-loop = Simulation of the spiking neural network model coupled with a simulated mechanical body
+- Position control <br />
+Simulation of the mechanical body with a pre-determined joints trajectory (position control)
 
-NOTE: The general convention for the naming of the simulations is the following
-- SIM (simulation) = Single (or few) simulations to display a principle or an effect, normally single process.
-- ANL (analysis) = Large scale grid searches to systematically explore a parameter space, normally multi process.
-- OPT (optimization) = Large scale searches with constraints and one (or more) cost functions to optimize, normally multi process.
+- Signal-driven <br />
+Simulation of the mechanical body with a pre-determined input for the muscle models (torque control)
 
+- Open-loop <br />
+Simulation of the spiking neural network mdoel without controlling of a body
+
+- Closed-loop <br />
+Simulation of the spiking neural network model coupled with a simulated mechanical body
+
+- Hybrid <br />
+Simulation of the spiking neural network model coupled with a position-controlled simulated mechanical body
 
 ## Installation instructions
 
